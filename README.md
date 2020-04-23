@@ -20,13 +20,13 @@ Followers.
 Looking at the distributions of each feature, there is no clear correlation between the popularity of a song, and other features.
 The only features that show some correlation are loudness, acousticness and energy.
 
-![Key Features & Correlation Matrix](Heat Map link-to-image-github)
+![Key Features & Correlation Matrix](Images/Analysis/Correlation HeatMap.png)
 
 **Modeling**
 
 We used classification algorithms to predict whether a song will be popular or not. We used historical data to train the  model and built a prediction model by regression. The 3 models we used are: Linesr Regression, OLS Regression and Classification Model.
 
-![Model Performance](screenshot model_performance_accuracy and auc and  link-to-image-github)
+![Model Performance](Images/Regression/Model Performance.png)
 
 
 
