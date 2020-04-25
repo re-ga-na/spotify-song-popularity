@@ -23,84 +23,124 @@
         <li class="navbar-item">
           <a href="static/assets/more_analysis.html" class="nav-link"><strong>Project Detail</strong></a>
         </li>
+        <li class="navbar-item">
+          <a target="_blank" href="https://github.com/re-ga-na/spotify-song-popularity" class="nav-link"><strong>GitHub</strong></a>
+        </li>
       </ul>
       </div>
     </nav>
     
         <div class="card-deck">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
               <div class="card">
                 <div class="card-body">
-                  <h1 class="card-title">Chocolate</h1>
+                  <h1 class="card-title">Final Project</h1>
                   <hr></hr>
-                  <img class="rounded float-left" alt= "Chocolate" width="300" height="150" src="assets/chocolate.png" hspace="20">
-                  <h5>Everybody loves chocolate!</h5>
-                  <p class="card-text">57% of people prefer chocolate to any other candy. In this project we set out to find:
+                  <!-- <img class="rounded float-left" alt= "Chocolate" width="300" height="150" src="assets/chocolate.png" hspace="20"> -->
+                  <h5>What does it take to have a popular song on Spotify? </h5>
+                  <p class="card-text">This is, quite literally, the million-dollar question.
+                    <br></br>
+                    This project has the objective to predict a song’s Spotify popularity based on audio features from the Spotify database and song popularity measured by the number of followers.
+                    We used regression and classification models to answer some of these questions:
                     <ul>
-                      <li>Where the best chocolate is grown and refined. </li>
-                      <li>Comparisons in economic trends in origin countries and countries where companies are headquartered.</li>
-                      <li>Temperature trends in these countries to see how they impact chocolate quality.</li>
+                      <li>What does it take to get a popular song on Spotify? </li>
+                      <li>Can a song's features predict its popularity on Spotify?</li>
                     </ul>
-                     To answer these questions, we combined <strong>three</strong> different <strong>datasets</strong>:
-                     <ul>
-                      <li>Kaggle: expert ratings of chocolate bars from 2006 to 2017. </li>
-                      <li>World Bank: GDP for the same years for all the countries mentioned in our main dataset.</li> 
-                      <li>Data.world: Temperature readings for each country from the 1700s to 2013.</li>
-                     </ul>
-                     We used a <strong>Jupyter Notebook</strong> to explore, clean, and reformat our data before we could begin to answer the research questions.
+                     
+                     From the Spotify database API, a ~45,000 songs and artist were analyzed from different genres. The dataset comes from Million Song Database (2008-2010) and Kaggle Datasets. There were three different calls to the API to get artist, audio and track features.
+                     After using Python and some data wrangling techniques, we created data frame that was used to do some exploratory data analysis. Our Target Variable is Popularity and the Independent Variables are: Acousticness, Danceability, Duration, Energy, Instrumentalness, Key, Liveness, Loudness, Mode, Speechiness, Tempo, Valence and Followers.
                      <br></br>
-                     <h5><strong>General Conclusions</strong></h5>
-                     <ul>
-                      <li>The best rated chocolate comes from the Criollo bean.</li>
-                      <li>Countries that grow cacao for chocolate production are generally poorer than the countries where chocolate companies are headquartered.</li>                      
-                      <li>In some cacao growing countries, recent temperature readings have occurred outside of the ideal temperature range for cacao viability.</li>
-                     </ul>
-                     <h5><strong>Difficulties</strong></h5>
-                     <ul>
-                      <li>We have chocolate dates from 2006 to 2017, but our climate data only goes up to 2013. Given that the past several years have been the hottest on record, our predictions for the future of cacao's viability in its growing climates would be enriched with more recent information.</li>
-                      <li>Missing data and small data sets served as a barrier for hypothesis testing.</li>                                           
-                     </ul>
-                     <h5><strong>Additional Inquiry</strong></h5>
-                     <ul>
-                      <li>Humidity is perhaps even more important than temperature for cacao production -- look at global humidity trends in producing countries</li>
-                      <li>Does chocolate quality correlate with income of cacao farmers? Do companies that make better chocolate pay their farmers better?</li>                      
-                      <li>Is it possible to get more granular information about specific company's production processes? Perhaps production methods have more influence on quality than cacao source.</li>
-                     </ul>
-                    </p>
-                </div>
-              </div>
-            </div>
+                     
+                     <!-- <div class="card-deck">
+                      <div class="col-sm-6">
+                        <div class="card">
+                          <div class="card-body"> -->
+                            <h5><bold>Data and Analysis</bold></h5>
+                              Looking at the distributions of each feature, there is no clear correlation between the popularity of a song, and other features. The only features that show some correlation are Loudness, Acousticness Energy and Followers.
+                              <br></br>
+                              
+                              <img class="img__img" alt= "Correlation HeatMap" width='50%' height='50%'  src="../images/Correlation_HeatMap.png">
+                              
+                              <br></br>
+                              To get a better sense of how the features are correlated, we created different plots. The most significant one is the one is Energy vs. Loudness by Acousticness, While other plots, as you notice from the image below, are not really meaningful. 
+                              <img class="rounded float-left" alt= "Energy vs. Loudness by Acousticness" width='50%' height='50%' src="../images/Energy_vs_Loudness_by_Acousticness.png">
+                              <br></br>
+                              <img class="rounded float-left" alt= "Other Pcatter Plots" width='50%' height='50%' src="../images/scatter_plots.png">
+                              <br></br>
+                              To improve the understanding of the overall distribution of these features, we created different visualizations as follows.
+                              <img class="rounded float-left" alt= "Pair Plots" width='50%' height='50%' src="../images/pair_plots.png">
+                              <br></br>
+                              Followers vs. popularity – the more popular the song, the more followers it has. 
+                              <img class="rounded float-left" alt= "Box Plot Followers" width='50%' height='50%' src="../images/box_plot_followers.png">
+                              <br></br>
+                              On the other hand, we would expect, the danceability of the song to have a correlation to its popularity, but it is not happening. 
+                              <img class="rounded float-left" alt= "Box Plot Dancability" width='50%' height='50%' src="../images/box_plot_dancability.png">
+                              <br></br>
+                              Instrumentaliness vs. popularity, instead, shows that the less instrumental the song is, the more popular it becomes.
+                              <img class="rounded float-left" alt= "Box Plot Instrumentalness" width='50%' height='50%' src="../images/box_plot_instrumentalness.png">
+                              <br></br>
+                            <!-- </div>
+                          </div>
+                        </div>
+                      </div> -->
+                     
+                     <!-- <div class="card-deck">
+                      <div class="col-sm-6">
+                        <div class="card">
+                          <div class="card-body"> -->
+                          <h5><bold>Modeling</bold></h5>
+                          Our target variable is popularity, which has a value from 0 to 100, with 100 being the most popular. Spotify's "Popularity" Score is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.
+                          <img class="rounded float-left" alt= "Target Variable" width='50%' height='50%' src="../images/target_variable.png">
+                          <br></br>
+                          We used classification algorithms to predict whether a song will be popular or not. We used historical data to train the model and built a prediction model by regression. The 3 models we used are: Linesr Regression, OLS Regression and Classification Model.
+                          <img class="rounded float-left" alt= "Linear Regression Model" width='50%' height='50%' src="../images/linear_regression_model.png">
+                            <br></br>
+                          <img class="rounded float-left" alt= "OLS Model" width='50%' height='50%' src="../images/OLS_model.png">
+                          <br></br>
+                          <img class="rounded float-left" alt= "Classification" width='50%' height='50%' src="../images/classification.png">
+                          <br></br>
+                          <!-- </div>
+                        </div>
+                      </div>
+                    </div> -->
 
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h1 class="card-title">Analysis</h1>
-                  <hr></hr>
-                  <img class="rounded float-left" alt= "Average_rating_per_year_all_beans" width="275" height="200" src="assets/Average_rating_per_year_all_beans.png">
-                  <img class="rounded float-left" alt= "Average_rating_per_type_of_bean" width="275" height="200" src="assets/Average_rating_per_type_of_bean.png">
-                  <img class="mx-auto d-block" alt= "Average_rating_of_the_Top_5_countries_by_higher_consistent_rating_by_year" width="400" height="250" src="assets/Average_rating_of_the_Top_5_countries_by_higher_consistent_rating_by_year.png">
-                  <img class="rounded float-left" alt= "Counts_of_ratings_vs_bean_origin_GDPs" width="275" height="200" src="assets/Counts_of_ratings_vs_bean_origin_GDPs.png">
-                  <img class="rounded float-left" alt= "Ratings_vs_bean_origin_GDPs" width="275" height="200" src="assets/Ratings_vs_bean_origin_GDPs.png">
-                  <img class="rounded float-left" alt= "Monthly Temperature" width="550" height="250" src="assets/Monthly Temperature.png">
-                  <img class="rounded float-left" alt= "Yearly Temperature" width="550" height="250" src="assets/Yearly Temperature.png">
+              <!-- <div class="card-deck">
+                <div class="col-sm-12">
+                  <div class="card">
+                    <div class="card-body"> -->
+                      <h5><strong>General Conclusions</strong></h5>
+                      <ul>
+                        <li>one</li>
+                        <li>two</li>                      
+                        <li>three</li>
+                      </ul>
+                      <img class="rounded float-left" alt= "Model_Performance" width='50%' height='50%' src="../images/Model_Performance.png">
+                      <h5><strong>Difficulties</strong></h5>
+                      <ul>
+                        <li>one</li>
+                        <li>two</li>                                           
+                      </ul>
+                      <h5><strong>Additional Inquiry</strong></h5>
+                      <ul>
+                        <li>one</li>
+                        <li>two</li>                      
+                        <li>three</li>
+                      </ul>
+                      </p>
+                  <!-- </div>
                 </div>
               </div>
-            </div>
-          </div>
+
+            </div> -->
+        </div>
         
-          <footer>
-            <p>Iris Kurti, Regana Alicka, Ricardo Calderon and Zhongping Yang</p>
-          </footer>  
-              
-           
-            
-            
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
+        <footer class="footer">
+          <span class="bottom">Iris Kurti, Regana Alicka, Suhaib Kiani and Ricardo Calderon</span>
+        </footer>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+      <script src="static/js/data.js"></script>
+      <script src="static/js/app.js"></script>
     </body>
-</html>
+    
+    </html>
