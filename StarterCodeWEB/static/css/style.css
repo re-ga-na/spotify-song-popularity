@@ -43,6 +43,12 @@ body {
   margin: 0;
 }
 
+p.image-text  {text-align: justify;
+}
+
+ul.image-text  {text-align: justify;
+}
+
 .nav-link{
   font-family: Ubuntu, sans-serif;
   font-size: 20px;
@@ -55,6 +61,13 @@ body {
   left: 480px;
   width: 35px;
   color: white;
+}
+.image-text {
+  position: relative;
+  /* top: 50%; */
+  left: 50%;
+  margin-right: 50%;
+  transform: translate(-50%, -50%)
 }
 
 /* Adding styles to the aside and filter form */
@@ -85,11 +98,11 @@ select {
 }
 
 /* quick reset */
-* {
+/* * {
   margin: 0;
   padding: 0;
   border: 0;
-}
+} */
 
 /* relevant styles */
 .img__wrap {
