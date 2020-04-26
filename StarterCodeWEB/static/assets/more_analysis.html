@@ -15,92 +15,145 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="../../index.html">What does it take to have a popular song on Spotify?
-            <!-- <img class="nav-songs" src="static/images/spotify_logo.png"> -->
-          </a>
+          <a class="navbar-brand" href="../../index.html">What does it take to have a popular song on Spotify?</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
         <li class="navbar-item">
           <a href="static/assets/more_analysis.html" class="nav-link"><strong>Project Detail</strong></a>
         </li>
-      </ul>
+        <li class="navbar-item">
+          <a target="_blank" href="https://github.com/re-ga-na/spotify-song-popularity" class="nav-link"><strong>GitHub</strong></a>
+        </li>
+        </ul>
       </div>
+      
     </nav>
     
-        <div class="card-deck">
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h1 class="card-title">Chocolate</h1>
-                  <hr></hr>
-                  <img class="rounded float-left" alt= "Chocolate" width="300" height="150" src="assets/chocolate.png" hspace="20">
-                  <h5>Everybody loves chocolate!</h5>
-                  <p class="card-text">57% of people prefer chocolate to any other candy. In this project we set out to find:
-                    <ul>
-                      <li>Where the best chocolate is grown and refined. </li>
-                      <li>Comparisons in economic trends in origin countries and countries where companies are headquartered.</li>
-                      <li>Temperature trends in these countries to see how they impact chocolate quality.</li>
-                    </ul>
-                     To answer these questions, we combined <strong>three</strong> different <strong>datasets</strong>:
-                     <ul>
-                      <li>Kaggle: expert ratings of chocolate bars from 2006 to 2017. </li>
-                      <li>World Bank: GDP for the same years for all the countries mentioned in our main dataset.</li> 
-                      <li>Data.world: Temperature readings for each country from the 1700s to 2013.</li>
-                     </ul>
-                     We used a <strong>Jupyter Notebook</strong> to explore, clean, and reformat our data before we could begin to answer the research questions.
-                     <br></br>
-                     <h5><strong>General Conclusions</strong></h5>
-                     <ul>
-                      <li>The best rated chocolate comes from the Criollo bean.</li>
-                      <li>Countries that grow cacao for chocolate production are generally poorer than the countries where chocolate companies are headquartered.</li>                      
-                      <li>In some cacao growing countries, recent temperature readings have occurred outside of the ideal temperature range for cacao viability.</li>
-                     </ul>
-                     <h5><strong>Difficulties</strong></h5>
-                     <ul>
-                      <li>We have chocolate dates from 2006 to 2017, but our climate data only goes up to 2013. Given that the past several years have been the hottest on record, our predictions for the future of cacao's viability in its growing climates would be enriched with more recent information.</li>
-                      <li>Missing data and small data sets served as a barrier for hypothesis testing.</li>                                           
-                     </ul>
-                     <h5><strong>Additional Inquiry</strong></h5>
-                     <ul>
-                      <li>Humidity is perhaps even more important than temperature for cacao production -- look at global humidity trends in producing countries</li>
-                      <li>Does chocolate quality correlate with income of cacao farmers? Do companies that make better chocolate pay their farmers better?</li>                      
-                      <li>Is it possible to get more granular information about specific company's production processes? Perhaps production methods have more influence on quality than cacao source.</li>
-                     </ul>
-                    </p>
-                </div>
-              </div>
+  <div class="card-deck">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">Final Project</h1>
+            <hr></hr>
+              <!-- <img class="rounded float-left" alt= "Chocolate" width="300" height="150" src="assets/chocolate.png" hspace="20"> -->
+            <h5>What does it take to have a popular song on Spotify? </h5>
+            <p class="card-text">This is, quite literally, the million-dollar question.
+            <br></br>
+            This project has the objective to predict a song’s Spotify popularity based on audio features from the Spotify database and song popularity measured by the number of followers.
+            We used regression and classification models to answer some of these questions:
+            <ul>
+              <li>What does it take to get a popular song on Spotify? </li>
+              <li>Can a song's features predict its popularity on Spotify?</li>
+            </ul> 
+            From the Spotify database API, a ~45,000 songs and artist were analyzed from different genres. The dataset comes from Million Song Database (2008-2010) and Kaggle Datasets. There were three different calls to the API to get artist, audio and track features.
+            After using Python and some data wrangling techniques, we created data frame that was used to do some exploratory data analysis. Our Target Variable is Popularity and the Independent Variables are: Acousticness, Danceability, Duration, Energy, Instrumentalness, Key, Liveness, Loudness, Mode, Speechiness, Tempo, Valence and Followers.
+            <br></br>
+            <h5><bold>Data and Analysis</bold></h5>
+            <br></br>
+            <div> 
+              <p class='image-text'> Looking at the distributions of each feature, there is no clear correlation between the popularity of a song, 
+              and other features. The only features that show some correlation are Loudness, Acousticness Energy and Followers.
             </div>
-
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h1 class="card-title">Analysis</h1>
-                  <hr></hr>
-                  <img class="rounded float-left" alt= "Average_rating_per_year_all_beans" width="275" height="200" src="assets/Average_rating_per_year_all_beans.png">
-                  <img class="rounded float-left" alt= "Average_rating_per_type_of_bean" width="275" height="200" src="assets/Average_rating_per_type_of_bean.png">
-                  <img class="mx-auto d-block" alt= "Average_rating_of_the_Top_5_countries_by_higher_consistent_rating_by_year" width="400" height="250" src="assets/Average_rating_of_the_Top_5_countries_by_higher_consistent_rating_by_year.png">
-                  <img class="rounded float-left" alt= "Counts_of_ratings_vs_bean_origin_GDPs" width="275" height="200" src="assets/Counts_of_ratings_vs_bean_origin_GDPs.png">
-                  <img class="rounded float-left" alt= "Ratings_vs_bean_origin_GDPs" width="275" height="200" src="assets/Ratings_vs_bean_origin_GDPs.png">
-                  <img class="rounded float-left" alt= "Monthly Temperature" width="550" height="250" src="assets/Monthly Temperature.png">
-                  <img class="rounded float-left" alt= "Yearly Temperature" width="550" height="250" src="assets/Yearly Temperature.png">
-                </div>
-              </div>
+              <img class="rounded float-left" alt= "Correlation HeatMap" width='50%' height='50%'  src="../images/Correlation_HeatMap.png">
+              <br></br>
+            <div>
+              <p class='image-text'> To get a better sense of how the features are correlated, we created different plots. The most significant one is the one is Energy vs. Loudness by Acousticness, While other plots, as you notice from the image below, are not really meaningful. 
+            </div>  
+              <img class="rounded float-left" alt= "Energy vs. Loudness by Acousticness" width='50%' height='50%' src="../images/Energy_vs_Loudness_by_Acousticness.png">
+              <br></br>
+              <img class="rounded float-left" alt= "Other Pcatter Plots" width='50%' height='50%' src="../images/scatter_plots.png">
+              <br></br>
+            <div>
+              <p class='image-text'>To improve the understanding of the overall distribution of these features, we created different visualizations as follows.
             </div>
-          </div>
-        
-          <footer>
-            <p>Iris Kurti, Regana Alicka, Ricardo Calderon and Zhongping Yang</p>
-          </footer>  
-              
-           
-            
-            
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
+              <img class="rounded float-left" alt= "Pair Plots" width='50%' height='50%' src="../images/pair_plots.png">
+              <br></br>
+            <div>
+              <p class='image-text'>Followers vs. popularity – the more popular the song, the more followers it has. 
+            </div>
+              <img class="rounded float-left" alt= "Box Plot Followers" width='50%' height='50%' src="../images/box_plot_followers.png">
+              <br></br>
+            <div>
+              <p class='image-text'>On the other hand, we would expect, the danceability of the song to have a correlation to its popularity, but it is not happening. 
+            </div>
+              <img class="rounded float-left" alt= "Box Plot Dancability" width='50%' height='50%' src="../images/box_plot_dancability.png">
+              <br></br>
+            <div>
+              <p class='image-text'>Instrumentaliness vs. popularity, instead, shows that the less instrumental the song is, the more popular it becomes.
+            </div>
+              <img class="rounded float-left" alt= "Box Plot Instrumentalness" width='50%' height='50%' src="../images/box_plot_instrumentalness.png">
+              <br></br>
+              <h5><bold>Modeling</bold></h5>
+            <div>
+              <p class='image-text'>Our target variable is popularity, which has a value from 0 to 100, with 100 being the most popular. Spotify's "Popularity" Score is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.
+              <!-- <br></br> -->
+              We used classification algorithms to predict whether a song will be popular or not. We used historical data to train the model and built a prediction model by regression. The 3 models we used are: Linesr Regression, OLS Regression and Classification Model.
+            </div>
+              <img class="rounded float-left" alt= "Target Variable" width='50%' height='50%' src="../images/target_variable.png">
+              <br></br>
+            <div>
+              <p class='image-text'>The first model we ran is the linear regression. We separated the variables into x and y:
+              <br></br>
+            </div>
+            <div>
+              <ul class='image-text'>
+                <li><strong>X</strong> are all the independent variables or predictors (we have a total of 14)</li>
+                <li><strong>Y</strong> is the depended variable, which in this case is popularity</li>
+              </ul>
+            </div>
+            <div>
+              We did a split on a train test, we used a test size is 30%, so means that percentage of training is 70%. The result gave us an R2 of 22 percent. We also tried to improve the accuracy using other tools, including the log of popularity, reducing the number of features using the scaler. Still, the R2 that we got with these tests was even lower than 22%.
+              <br></br>
+              On the left are the Residual and Error Plots. Ideally, the error plots should typically be distributed around zero, but instead, you can observe a mountain shape with two peaks. We believe this is because of the data set we add together, which shows some kind of skew, as seen in the distribution of the popularity data, the curve that looks like a dinosaur. So the distribution shape can translate in a similar distribution of errors.
+            </div>
+            <img class="rounded float-left" alt= "Linear Regression Model" width='50%' height='50%' src="../images/linear_regression_model.png">
+            <br></br>
+            <p class='image-text'>We also run an OLS regression and got the same R2 of 22%.
+            <p>We can see here that variables like danceability, instrumentalness, liveness have the highest coefficient which shows how this variable is highly correlated with the popularity
+              We can also see here the p-value, where valuables like mode and key show that are not statistically significant.
+              On the top, we can also see the F-statistic, which is a large number, so this represents that our data has a higher dispersion.
+              <br></br>
+              At the right, we see the Root Mean Square Error (RMSE), which is the square root of the variance of the residuals. It indicates the absolute fit of the model to the data, meaning that how close the real values are to the model’s predicted values.
+              <br></br>
+              We were hoping to get better regression results trying several tests, but we could not improve the results.</p>
+              <img class="rounded float-left" alt= "OLS Model" width='50%' height='50%' src="../images/OLS_model.png">
+              <br></br>
+              <p>We changed the continuous variable of popularity that is from 0 to 100 and have two sets, one from zero to 60 and other from 60 to 100.
+              Form 0 to 60, we called it not popular, and over 60 popular. 
+              We tried the four models listed below and found out that Random Forest Classifier and decision tree classifier were the best. We were not expecting to see such strong AUC numbers closer to 88.</p>
+              <img class="rounded float-left" alt= "Classification" width='50%' height='50%' src="../images/classification.png">
+              <br></br>
+                                  
+                <h5><strong>General Conclusions</strong></h5>
+                <ul>
+                  <li>one</li>
+                  <li>two</li>                      
+                  <li>three</li>
+                </ul>
+                  <img class="rounded float-left" alt= "Model_Performance" width='50%' height='50%' src="../images/Model_Performance.png">
+                  <h5><strong>Difficulties</strong></h5>
+                  <ul>
+                    <li>one</li>
+                    <li>two</li>                                           
+                  </ul>
+                    <h5><strong>Additional Inquiry</strong></h5>
+                  <ul>
+                    <li>one</li>
+                    <li>two</li>                      
+                    <li>three</li>
+                  </ul>
+        </div>
+      </div>
+    </div>               
+  </div>
+      <div>
+        <footer class="footer">
+          <span class="bottom">Iris Kurti, Regana Alicka, Suhaib Kiani and Ricardo Calderon</span>
+        </footer>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+      <script src="static/js/data.js"></script>
+      <script src="static/js/app.js"></script>
     </body>
-</html>
+    
+    </html>

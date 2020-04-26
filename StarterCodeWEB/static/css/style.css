@@ -43,6 +43,12 @@ body {
   margin: 0;
 }
 
+p.image-text  {text-align: justify;
+}
+
+ul.image-text  {text-align: justify;
+}
+
 .nav-link{
   font-family: Ubuntu, sans-serif;
   font-size: 20px;
@@ -56,12 +62,25 @@ body {
   width: 35px;
   color: white;
 }
+.image-text {
+  position: relative;
+  /* top: 50%; */
+  left: 50%;
+  margin-right: 50%;
+  transform: translate(-50%, -50%)
+}
 
 /* Adding styles to the aside and filter form */
 .songs-form {
   margin-top: 50px;
 }
 
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 40%; */
+}
 .filters .panel-body {
   padding: 0;
 }
@@ -77,6 +96,41 @@ select {
   color: #8e979f;
   outline: none;
 }
+
+/* quick reset */
+/* * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+} */
+
+/* relevant styles */
+.img__wrap {
+  position: relative;
+  height: 200px;
+  width: 257px;
+}
+
+.img__description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.img__wrap:hover .img__description {
+  visibility: visible;
+  opacity: 1;
+}
+
 
 #table-area th {
   text-align: center;
