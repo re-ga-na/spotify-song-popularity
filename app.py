@@ -68,17 +68,18 @@ def api_call(Artist,Track):
         print ('data not found')  
 
 
-    return { 
+    return {    "Song": result['tracks']['items'][0]['name'],
+                "Artist" :  result['tracks']['items'][0]['album']['artists'][0]['name'],
+                "Popularity": features_i["popularity"].values[0],
                 "Followers": features['followers'].values[0],
-                "Instrumentalness": features['instrumentalness'],
-                "Acousticness": features[['acousticness']],
-                "Danceability": features[['danceability']],
-                "Popularity": features[['popularity']],
+                "Instrumentalness": features['instrumentalness'].values[0],
+                "Acousticness": features['acousticness'].values[0],
+                "Danceability": features['danceability'].values[0],
+                "Tempo": features['tempo'].values[0],
+                "----------------------------------------------": "Complete Feature Array>>",
+                
                 "features_x": features[['followers','instrumentalness','acousticness', 'danceability', 'duration_ms', 'energy', 'key', 'liveness', 'loudness', 'mode','speechiness', 'tempo', 'time_signature', 'valence']],
                 "features_y": features['popularity'],
-                #"song_name": search_str,
-                #"artist_name" : artistname,
-                #"popularity": features_i["popularity"],
                 }
 
     
@@ -93,8 +94,8 @@ def lr_model(user_input_artist, user_input_song):
    # Predict the Labels using the reloaded Model
     Y_predict = Pickled_LR_Model.predict(result_dictionary["features_x"])  
     spotify_dict={
-        "Actual Spotify song poularity:":result_dictionary["features_y"],
-        "Model predicted popularity":Y_predict}
+        "Actual Spotify Song popularity":result_dictionary["Popularity"],
+        "LR Model Popularity Prediction":f"{Y_predict[0,0]:.2f}"}
     return spotify_dict
 
 
@@ -107,8 +108,8 @@ def dt_model(user_input_artist, user_input_song):
     result_dictionary= api_call(user_input_artist, user_input_song)
     Y_predict2 = Pickled_Model2.predict(result_dictionary["features_x"])     
     spotify_dict2={
-        "Actual Spotify song poularity:":result_dictionary["features_y"],
-        "Model prediction popular_01":Y_predict2}
+        "Actual Spotify Song Popularity":result_dictionary["Popularity"],
+        "RC Model Prediction":Y_predict2[0]}
     return spotify_dict2
 
 
@@ -149,7 +150,10 @@ def handledata():
     print(song_name)
 
 
-    return render_template("index.html", song_name=song_name, song_name2=song_name2, song_name3=song_name3)
+    return render_template("index.html", 
+        song_name=song_name, 
+        song_name2=song_name2, 
+        song_name3=song_name3)
             
 
 
