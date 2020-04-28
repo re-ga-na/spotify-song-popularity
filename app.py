@@ -9,14 +9,14 @@ app = Flask(__name__)
 # A. Load Models & Set Up API 
 #-----------------------------------------------
 # Load the model 1 (check file link)
-pkl_filename = "C:/Users/Suhaib Kiani/Desktop/pickle_45.pkl"
-#pkl_filename = "Resources/pickle/pickle_45.pkl" 
+pkl_filename = "C:/Users/Irisi/Desktop/pickle_45.pkl"
+# pkl_filename = "Resources/pickle/pickle_45.pkl" 
 with open(pkl_filename, 'rb') as pkl:  
     Pickled_LR_Model = pickle.load(pkl)
 
 # Load the model 2
-pkl_filename2 = "C:/Users/Suhaib Kiani/Desktop/pickle_45_Model2.pkl"  
-#pkl_filename2 = "Resources/pickle/pickle_45_Model2.pkl"  
+pkl_filename2 = "C:/Users/Irisi/Desktop/pickle_45_Model2.pkl"  
+# pkl_filename2 = "Resources/pickle/pickle_45_Model2.pkl"  
 with open(pkl_filename2, 'rb') as file2:  
     Pickled_Model2 = pickle.load(file2)
 
