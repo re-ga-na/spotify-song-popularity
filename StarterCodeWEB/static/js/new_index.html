@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>Machine Learning Song Genre Generator</title>
+
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  
+  <!-- Our CSS  and theme-->
+  <link rel="stylesheet" type="text/css" href="static/style.css">
+  
+
+  <!-- font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+
+
+</head>
+
+<body>
+
+    <div class="container">
+      <div class="text-center"><h1 class="display-4">Machine Learning Song Genre Predictor</h1></div>
+        <div class="row">
+            <!-- left side -->
+          <div class="col-sm">
+            <div class="jumbotron">
+                
+                <br>
+                <!-- song input -->
+            <form action="{{ url_for('handledata') }}" method="POST">
+                <div class="input_container">
+                    <label for="date">Input a song (you can just input title, or title and artist)</label>
+                    <input class="form-control" id="song_input" type="text" placeholder="Random Song" name="input_song">
+                </div>
+                
+                <br>
+                <!-- button -->
+                <input  type="submit" > </input>
+            </form>
+            <br>
+            <h5>About the Machine Learning Model:</h5>
+            This model was trained with a dataset of over 200,000 songs from Spotify, 24 genres, 
+            and ___ audio features (ex. acousticness, danceability, energy, loudness).  The song 
+            you input is retrieved using the Spotify API, then run through the model.
+            <br>
+            <div class="img"></div>
+            
+            <p class="text-success">Created by Columbia Engineering Data Analytics Bootcamp Students - <br> Roaya Helal, Emma Pang, Jennifer Qian, and James Zheng.</p>
+            </div>
+          </div>
+
+          <!-- right side -->
+          <div class="col-sm">
+            <div class="jumbotron"><br>
+              <div class="text-center">
+                <h4> {{ song_name }}</h4>
+                <img src="{{ artwork }}" height="200" width="200" alt=""> <br> <br>
+                                <!-- prediction -->
+                                <div class="genre_predict"><h5>
+                                    Predicted Genre: {{ user_song_genre }}
+                                  </h5>
+                                </div>
+                                
+                                <!-- actual -->
+                                <div class="actual_genre"><h5>
+                                    Confidence: {{ confidence }} 
+                                  </h5>
+                                </div>
+                                <div class="actual_genre"><h5>
+                                  Actual Genre: {{ actual_genre }} 
+                                </h5>
+                              </div>
+                              <br>
+                                
+                                <iframe src="https://open.spotify.com/embed/track/{{ song_id }}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                              
+                                <br>
+                                <br>
+                                <h5>Song Recommendation</h5>
+                                <!-- recommended songs -->
+                                <h6>
+                                  
+                                  
+                                  <a href="{{ recommendation_url }}" target="blank">{{ recommendation_track_name }} by {{ recommendation_artist_name }}</a>
+                                </h6>
+                              </div>
+                                
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+
+  <!-- Our JS -->
+  <script type="text/javascript" src="static/app.js"></script>
+
+      <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
