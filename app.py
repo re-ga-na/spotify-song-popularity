@@ -9,14 +9,14 @@ app = Flask(__name__)
 # A. Load Models & Set Up API 
 #-----------------------------------------------
 # Load the model 1 (check file link)
-pkl_filename = "C:/Users/Irisi/Desktop/pickle_45.pkl"
-# pkl_filename = "Resources/pickle/pickle_45.pkl" 
+pkl_filename = "C:/Users/Suhaib Kiani/Desktop/pickle_45.pkl"
+#pkl_filename = "Resources/pickle/pickle_45.pkl" 
 with open(pkl_filename, 'rb') as pkl:  
     Pickled_LR_Model = pickle.load(pkl)
 
 # Load the model 2
-pkl_filename2 = "C:/Users/Irisi/Desktop/pickle_45_Model2.pkl"  
-# pkl_filename2 = "Resources/pickle/pickle_45_Model2.pkl"  
+pkl_filename2 = "C:/Users/Suhaib Kiani/Desktop/pickle_45_Model2.pkl"  
+#pkl_filename2 = "Resources/pickle/pickle_45_Model2.pkl"  
 with open(pkl_filename2, 'rb') as file2:  
     Pickled_Model2 = pickle.load(file2)
 
@@ -68,9 +68,14 @@ def api_call(Artist,Track):
         print ('data not found')  
 
 
-    return {"model_df":features, 
+    return { 
+                "Followers": features['followers'].values[0],
+                "Instrumentalness": features['instrumentalness'],
+                "Acousticness": features[['acousticness']],
+                "Danceability": features[['danceability']],
+                "Popularity": features[['popularity']],
                 "features_x": features[['followers','instrumentalness','acousticness', 'danceability', 'duration_ms', 'energy', 'key', 'liveness', 'loudness', 'mode','speechiness', 'tempo', 'time_signature', 'valence']],
-                "features_y": features[['popularity']]
+                "features_y": features['popularity'],
                 #"song_name": search_str,
                 #"artist_name" : artistname,
                 #"popularity": features_i["popularity"],
@@ -123,10 +128,7 @@ def handledata():
     # song_name = lr_model(request.form["input_artist"], request.form["input_song"])
     # return render_template("index.html", **song_name)
  
-    # # use helper function2 to get 2nd result
-    # song_name2 = dt_model(request.form["input_artist"], request.form["input_song"])
-    # return render_template("index.html", **song_name2)
-
+    
     singer=request.form["input_artist"]
     print(singer)
     song=request.form["input_song"]
@@ -136,13 +138,19 @@ def handledata():
     song_name=api_call(singer,song)
     #popularity=song_name[0]
     #popularity="test"
-    
+    # # use helper function2 to get 2nd result
+    song_name2 = lr_model(singer,song)
+    # return render_template("index.html", **song_name2)
+    song_name3 = dt_model(singer,song)
+
+
+
     print("this is the result to pass")
     print(song_name)
 
 
-    return render_template("index.html", song_name=song_name)
-
+    return render_template("index.html", song_name=song_name, song_name2=song_name2, song_name3=song_name3)
+            
 
 
 if __name__ == "__main__":
