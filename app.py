@@ -9,14 +9,14 @@ app = Flask(__name__)
 # A. Load Models & Set Up API 
 #-----------------------------------------------
 # Load the model 1 (check file link)
-#pkl_filename = "C:/Users/Suhaib Kiani/Desktop/pickle_45.pkl"
-pkl_filename = "Resources/pickle/pickle_45.pkl" 
+pkl_filename = "C:/Users/Suhaib Kiani/Desktop/pickle_45.pkl"
+#pkl_filename = "Resources/pickle/pickle_45.pkl" 
 with open(pkl_filename, 'rb') as pkl:  
     Pickled_LR_Model = pickle.load(pkl)
 
 # Load the model 2
-#pkl_filename2 = "C:/Users/Suhaib Kiani/Desktop/pickle_45_Model2.pkl"  
-pkl_filename2 = "Resources/pickle/pickle_45_Model2.pkl"  
+pkl_filename2 = "C:/Users/Suhaib Kiani/Desktop/pickle_45_Model2.pkl"  
+#pkl_filename2 = "Resources/pickle/pickle_45_Model2.pkl"  
 with open(pkl_filename2, 'rb') as file2:  
     Pickled_Model2 = pickle.load(file2)
 
@@ -35,7 +35,7 @@ Artist="Lionel Richie"
 Track="Tonight Will Be Alright"
 
 
-def get_requested_song_df(Artist,Track):
+def api_call(Artist,Track):
     #set up blank features df 
     features = ['0', 'Artist', 'Track', 'Unnamed: 0', 'acousticness', 'danceability',
         'duration_ms', 'energy', 'followers', 'instrumentalness', 'key',
@@ -84,7 +84,7 @@ def get_requested_song_df(Artist,Track):
 
 # helper function1
 def lr_model(user_input_artist, user_input_song):
-    result_dictionary=get_requested_song_df(user_input_artist, user_input_song)
+    result_dictionary= api_call(user_input_artist, user_input_song)
    # Predict the Labels using the reloaded Model
     Y_predict = Pickled_LR_Model.predict(result_dictionary["features_x"])  
     spotify_dict={
@@ -99,7 +99,7 @@ from sklearn.metrics import make_scorer, accuracy_score, roc_auc_score
 # helper function2
 def dt_model(user_input_artist, user_input_song):
    # Predict the Labels using the reloaded Model
-    result_dictionary=get_requested_song_df(user_input_artist, user_input_song)
+    result_dictionary= api_call(user_input_artist, user_input_song)
     Y_predict2 = Pickled_Model2.predict(result_dictionary["features_x"])     
     spotify_dict2={
         "Actual Spotify song poularity:":result_dictionary["features_y"],
@@ -119,14 +119,29 @@ def index():
 @app.route("/handledata", methods=["POST"])
 
 def handledata(): 
-    # use helper function to get result
-    song_name = lr_model(request.form["input_artist"], request.form["input_song"])
-    return render_template("index.html", **song_name)
+    # # use helper function to get result
+    # song_name = lr_model(request.form["input_artist"], request.form["input_song"])
+    # return render_template("index.html", **song_name)
  
-    # use helper function2 to get 2nd result
-    song_name2 = dt_model(request.form["input_artist"], request.form["input_song"])
-    return render_template("index.html", **song_name2)
+    # # use helper function2 to get 2nd result
+    # song_name2 = dt_model(request.form["input_artist"], request.form["input_song"])
+    # return render_template("index.html", **song_name2)
 
+    singer=request.form["input_artist"]
+    print(singer)
+    song=request.form["input_song"]
+    print(song)
+    
+   #  use helper function to get result
+    song_name=api_call(singer,song)
+    #popularity=song_name[0]
+    #popularity="test"
+    
+    print("this is the result to pass")
+    print(song_name)
+
+
+    return render_template("index.html", song_name=song_name)
 
 
 
