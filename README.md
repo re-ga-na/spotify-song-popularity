@@ -37,4 +37,4 @@ We can conclude that our results suggest that audio features from Spotify have l
 
 More Info:  [Prezi Presentation](https://prezi.com/view/6GrxZQ6CnhMpSGklysZ1/)
 
-Link to [Deployed Project](https://iris28kurti.github.io/SpotifyPopularity/index.html)
+Link to [Deployed Project](https://iris28kurti.github.io/popularityspotify/index.html)
