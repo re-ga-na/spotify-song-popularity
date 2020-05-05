@@ -3,20 +3,23 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import pandas as pd
 from flask import request, Flask, render_template
 import pickle
+# import sklearn; print('sklearn version:', sklearn.__version__)
 app = Flask(__name__)
+import struct
+# print (struct.calcsize("P") * 8)
 
 
 # A. Load Models & Set Up API 
 #-----------------------------------------------
 # Load the model 1 (check file link)
-pkl_filename = "C:/Users/Suhaib Kiani/Desktop/pickle_45.pkl"
-#pkl_filename = "Resources/pickle/pickle_45.pkl" 
+pkl_filename = "C:/Users/Irisi/Desktop/Pickle_45_Model.pkl"
+# pkl_filename = "Resources/pickle/Pickle_45_Model.pkl" 
 with open(pkl_filename, 'rb') as pkl:  
     Pickled_LR_Model = pickle.load(pkl)
 
 # Load the model 2
-pkl_filename2 = "C:/Users/Suhaib Kiani/Desktop/pickle_45_Model2.pkl"  
-#pkl_filename2 = "Resources/pickle/pickle_45_Model2.pkl"  
+pkl_filename2 = "C:/Users/Irisi/Desktop/Pickle_45_Model2.pkl"  
+# pkl_filename2 = "Resources/pickle/Pickle_45_Model2.pkl" 
 with open(pkl_filename2, 'rb') as file2:  
     Pickled_Model2 = pickle.load(file2)
 
@@ -61,7 +64,7 @@ def api_call(Artist,Track):
         features_i["popularity"] = sp.track(track_id)["popularity"]
         features_i["Artist"] = artistname
         features_i["Track"] = search_str
-        features = features.append(features_i)        
+        features = features.append(features_i)     
         print (features)
 
     except: 
@@ -96,6 +99,7 @@ def lr_model(user_input_artist, user_input_song):
         "Actual Spotify song poularity:":result_dictionary["features_y"],
         "Model predicted popularity":Y_predict}
     return spotify_dict
+    
 
 
 
@@ -149,7 +153,10 @@ def handledata():
     print(song_name)
 
 
-    return render_template("index.html", song_name=song_name, song_name2=song_name2, song_name3=song_name3)
+    return render_template("index.html", 
+        song_name=song_name, 
+        song_name2=song_name2, 
+        song_name3=song_name3)
             
 
 
